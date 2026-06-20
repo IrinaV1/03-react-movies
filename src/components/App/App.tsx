@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { fetchMovies } from '../../services/movieService';
 import type { Movie } from '../../types/movie';
 import toast, { Toaster } from 'react-hot-toast';
-import { MovieGrid } from '../MovieGrid/MovieGrid';
-import { Loader } from '../Loader/Loader';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
-import { MovieModal } from '../MovieModal/MovieModal';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import MovieGrid from '../MovieGrid/MovieGrid';
+import MovieModal from '../MovieModal/MovieModal';
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -28,9 +28,9 @@ export default function App() {
       setMovies([]);
       setIsLoader(true);
       const data = await fetchMovies(query);
-      console.log(data);
+
       if (data.length === 0) {
-        toast('No movies found for your request.');
+        toast.error('No movies found for your request.');
       }
       setMovies(data);
     } catch (error) {

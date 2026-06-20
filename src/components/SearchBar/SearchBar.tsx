@@ -9,10 +9,9 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     const query = formData.get('query') as string;
     if (!query || !query.trim()) {
       toast.error('Please enter your search query.');
-      console.log(query);
+
       return;
     }
-    console.log(query);
 
     onSubmit(query);
   };
